@@ -1,0 +1,133 @@
+<div class="row">
+<div class="col-md-6-col-sm-8 col-lg-6">
+<div class="panel panel-primary">
+<div class="panel-heading"><h3>Add Event</h3></div>
+<div class="panel-body">
+<form class="form" role="form" id="addEventForm" ng-submit="eventCtl.submitForm(eventForm)" name="addEventForm">
+<div class="row">
+<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+  <div class="form-group">
+    <label for="eventName" class="control-label">Name</label>
+    <input type="text" class="form-control" ng-model="eventForm.name" name="eventName" placeholder="Event name">
+	<p class="help-block">The event name</p>
+  </div>
+  </div>
+  <div class="col-md-6-col-sm-6 col-xs-12 col-lg-6">
+  <div class="form-group">
+    <label for="eventdescription" class="control-label">Description</label>
+ <input type="textarea" class="form-control"  ng-model="eventForm.description" name="eventdescription" placeholder="Event Description">
+ <p class="help-block">The event description</p>
+ </div>
+ </div>
+ </div>
+ <div class="row">
+<div class="col-md-6-col-sm-6 col-xs-12 col-lg-6">
+ <div class="form-group">
+  <label for="eventdate" class="control-label">date</label>
+ <input type="date" class="form-control"  ng-model="eventForm.date"  name="eventdate" placeholder="Event Date">
+ <p class="help-block">The event Date</p>
+ </div>
+ </div>
+ 
+ 
+ <div class="col-md-6-col-sm-6 col-xs-12 col-lg-6">
+ <div class="form-group">
+  <label for="eventlocation" class="control-label">Location</label>
+ <input type="text" class="form-control"  ng-model="eventForm.location"  name="eventlocation" placeholder="Event location">
+ <p class="help-block">The event Location</p>
+ </div>
+ </div>
+ </div>
+ 
+  <div class="row">
+<div class="col-md-6-col-sm-6 col-xs-12 col-lg-6">
+ <div class="form-group">
+  <label for="eventcategory" class="control-label">Category</label>
+  <select class="form-control"  ng-model="eventForm.eventCtl.category" ng-options="category.name as category.name for category in eventCtl.categories" data-width="100%" name="eventcategory">
+  
+ 
+	</select>
+	<p class="help-block">Select the event category</p>
+	</div>
+	</div>
+	
+	 <div class="col-md-6-col-sm-6 col-xs-12 col-lg-6">
+ <div class="form-group">
+  <label for="eventEmailInfo" class="control-label">Email</label>
+ <input type="email"  ng-model="eventForm.email"  class="form-control" name="eventEmailInfo" placeholder="Event info">
+ <p class="help-block">The contact email</p>
+ </div>
+ </div>
+ </div>
+ 
+ <div class="row">
+ <div class="col-md-6-col-sm-6 col-xs-12 col-lg-6">
+ <div class="form-group">
+  <label for="eventSpecial" class="control-label">Specail Event..?</label>
+  <br>
+  <label >
+  <input type="radio" name="eventspecial" > Yes
+  </label>
+    <label >
+  <input type="radio" name="eventspecial" > No
+  </label>
+</div>
+</div>
+<div class="col-md-6-col-sm-6 col-xs-12 col-lg-6">
+ <div class="form-group">
+  <label for="eventSpecial" class="control-label">Specail Event..?</label>
+  <br>
+  <div ng-repeat="type in eventCtl.specialtype">
+  <input type="checkbox" name="eventspecialtype" ng-model="eventForm.eventCtl.type.checked">{{type.name}}
+</div>
+  <input type="checkbox" name="specialalltype">Both
+  </div>
+  </div>
+ 
+</div>
+ 
+ 
+ 
+ <hr/>
+  <div class="row">
+<div class="col-md-6-col-sm-6 col-xs-12 col-lg-6">
+ <div class="form-group">
+ <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="reset" class="btn btn-primary">Reset</button>
+  </div>
+  </div>
+  </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ <div class="col-md-6 col-sm-8 col-lg-6">
+ {{eventForm|json}}
+ <div >
+ <table class="table table-hover">
+ <thead>
+ <tr>
+ <th>Event</th>
+ <th>Description</th>
+ <th>Category</th>
+ <th>Contact Email</th>
+ <th>Location</th>
+ <th>Date</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr ng-repeat="event in eventCtl.event">
+ <td>{{event.name}}</td>
+ <td>{{event.description}}</td>
+  <td>{{event.category}}</td>
+   <td>{{event.email}}</td>
+    <td>{{event.location}}</td>
+	 <td>{{event.date}}</td>
+ </tr>
+ </tbody>
+ </table>
+ 
+ </div>
+ </div>
+ 
+ </div>
